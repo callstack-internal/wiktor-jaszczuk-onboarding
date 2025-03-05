@@ -4,17 +4,20 @@
   "private": true,
   "repository": "https://github.com/callstack-internal/wiktor-jaszczuk-onboarding",
   "scripts": {
+    "xcode": "open ios/WiktorJaszczukOnboarding.xcworkspace",
     "android": "react-native run-android",
     "ios": "react-native run-ios",
     "lint": "eslint .",
     "start": "react-native start",
     "test": "jest",
     "prepare": "husky",
+    "podinstall": "bundle install && cd ios && bundle exec pod install",
     "tsc": "tsc"
   },
   "dependencies": {
     "react": "19.0.0",
-    "react-native": "0.78.0"
+    "react-native": "0.78.0",
+    "react-native-bootsplash": "^6.3.3"
   },
   "devDependencies": {
     "@babel/core": "^7.25.2",
