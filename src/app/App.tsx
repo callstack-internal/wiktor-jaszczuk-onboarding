@@ -5,8 +5,9 @@
  * @format
  */
 
-import React, {useEffect} from 'react';
+import {useCloseBootsplashOnMount} from '@hooks/useCloseBootsplashOnMount';
 import type {PropsWithChildren} from 'react';
+import React from 'react';
 import {
   ScrollView,
   StatusBar,
@@ -23,20 +24,14 @@ import {
   LearnMoreLinks,
   ReloadInstructions,
 } from 'react-native/Libraries/NewAppScreen';
-import BootSplash from 'react-native-bootsplash';
 
 type SectionProps = PropsWithChildren<{
   title: string;
 }>;
 
 function Section({children, title}: SectionProps): React.JSX.Element {
-  useEffect(() => {
-    (async () => {
-      await BootSplash.hide({fade: true});
-    })();
-  }, []);
-
   const isDarkMode = useColorScheme() === 'dark';
+
   return (
     <View style={styles.sectionContainer}>
       <Text
@@ -63,6 +58,8 @@ function Section({children, title}: SectionProps): React.JSX.Element {
 
 function App(): React.JSX.Element {
   const isDarkMode = useColorScheme() === 'dark';
+
+  useCloseBootsplashOnMount();
 
   const backgroundStyle = {
     backgroundColor: isDarkMode ? Colors.darker : Colors.lighter,
