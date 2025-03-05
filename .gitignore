@@ -77,3 +77,4 @@ yarn-error.log
 .env
 # react-native-config codegen
 ios/tmp.xcconfig
+/http_tests/http-client.private.env.json

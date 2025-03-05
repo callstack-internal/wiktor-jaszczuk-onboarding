@@ -1,0 +1,12 @@
+### get geocoding info for location
+GET http://api.openweathermap.org/geo/1.0/direct?q=wroclaw,pl&limit=1&appid={{API_KEY}}
+
+> {%
+  client.global.set("LAT", response.body[0].lat);
+  client.global.set("LON", response.body[0].lon);
+%}
+
+### resolve weather for given location
+GET https://api.openweathermap.org/data/2.5/weather?lat={{LAT}}&lon={{LON}}&units=metric&appid={{API_KEY}}
+
+###
