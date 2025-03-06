@@ -1,7 +1,7 @@
 import {useCloseBootsplashOnMount} from '@hooks/useCloseBootsplashOnMount';
 import React from 'react';
 import {StyleSheet, Text} from 'react-native';
-import Config from 'react-native-config';
+import {Config} from 'react-native-config';
 import {SafeAreaProvider, SafeAreaView} from 'react-native-safe-area-context';
 
 export function App() {
