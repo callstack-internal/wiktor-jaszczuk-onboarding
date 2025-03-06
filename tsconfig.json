@@ -16,7 +16,8 @@
       "@app/*": ["src/app/*"],
       "@components/*": ["src/components/*"],
       "@hooks/*": ["src/hooks/*"],
-      "@screens/*": ["src/screens/*"]
+      "@screens/*": ["src/screens/*"],
+      "@services/*": ["src/services/*"]
     }
   }
 }
