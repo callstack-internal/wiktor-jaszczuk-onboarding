@@ -4,7 +4,7 @@ module.exports = {
   overrides: [
     {
       files: [
-        'jest.setup.js',
+        './jest.setup.js',
         '**/*.spec.js',
         '**/*.spec.jsx',
         '**/*.spec.ts',
