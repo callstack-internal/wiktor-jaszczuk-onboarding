@@ -1,0 +1,36 @@
+[
+  {
+    "name": "Wrocław",
+    "local_names": {
+      "mk": "Вроцлав",
+      "lv": "Vroclava",
+      "eo": "Vroclavo",
+      "lt": "Vroclavas",
+      "it": "Breslavia",
+      "de": "Breslau",
+      "cs": "Vratislav",
+      "hu": "Boroszló",
+      "fr": "Vratislavie",
+      "ru": "Вроцлав",
+      "uk": "Вроцлав",
+      "bg": "Вроцлав",
+      "ar": "فروتزواف",
+      "he": "ורוצלב",
+      "ja": "ヴロツワフ",
+      "sr": "Вроцлав",
+      "en": "Wrocław",
+      "pt": "Breslávia",
+      "yi": "ברעסלוי",
+      "be": "Уроцлаў",
+      "zh": "弗罗茨瓦夫",
+      "pl": "Wrocław",
+      "la": "Wratislavia",
+      "sk": "Vroclav",
+      "es": "Breslavia"
+    },
+    "lat": 51.1089776,
+    "lon": 17.0326689,
+    "country": "PL",
+    "state": "Lower Silesian Voivodeship"
+  }
+]
