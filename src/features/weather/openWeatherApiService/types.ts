@@ -1,4 +1,4 @@
-import {geoEndpointResponseSchema} from '@services/openWeather/zodSchemas';
+import {geoEndpointResponseSchema} from './zodSchemas';
 import z from 'zod';
 
 export type OWMetrics = 'standard' | 'metric' | 'imperial';

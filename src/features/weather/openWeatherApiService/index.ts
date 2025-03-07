@@ -2,25 +2,25 @@ import {
   OPEN_WEATHER_API_URL,
   OPEN_WEATHER_CURRENT_WEATHER_ENDPOINT_URI,
   OPEN_WEATHER_GEO_ENDPOINT_URI,
-} from '@services/openWeather/openWeatherUrls';
-import type {OWLanguage, OWMetrics} from '@services/openWeather/types';
+} from './openWeatherUrls';
+import type {OWLanguage, OWMetrics} from './types';
 import {
   geoEndpointResponseSchema,
   weatherEndpointResponseSchema,
-} from '@services/openWeather/zodSchemas';
+} from './zodSchemas';
 import {Config} from 'react-native-config';
 
-export class OpenWeatherService {
-  private static instance: OpenWeatherService | undefined;
+export class OpenWeatherApiService {
+  private static instance: OpenWeatherApiService | undefined;
   private readonly apiKey: string;
 
   public static getInstance() {
-    if (OpenWeatherService.instance === undefined) {
-      OpenWeatherService.instance = new OpenWeatherService(
+    if (OpenWeatherApiService.instance === undefined) {
+      OpenWeatherApiService.instance = new OpenWeatherApiService(
         Config.OPEN_WEATHER_API_KEY,
       );
     }
-    return OpenWeatherService.instance;
+    return OpenWeatherApiService.instance;
   }
 
   private constructor(apiKey: string) {
@@ -40,7 +40,11 @@ export class OpenWeatherService {
       },
     );
 
-    return geoEndpointResponseSchema.parse(response);
+    const responseCollection = geoEndpointResponseSchema.parse(response);
+    if (responseCollection.length === 0) {
+      throw Error('Cannot resolve coordinates for given name');
+    }
+    return responseCollection[0];
   }
 
   public async getWeatherForLocation(
