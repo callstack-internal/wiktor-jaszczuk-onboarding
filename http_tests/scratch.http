@@ -1,5 +1,9 @@
 ### get geocoding info for location
-GET http://api.openweathermap.org/geo/1.0/direct?q=wroclaw,pl&limit=1&appid={{API_KEY}}
+< {%
+  request.variables.set("location", ["wroclaw,pl","warszawa,pl", "kraków,pl", "berlin,de"])
+%}
+
+GET http://api.openweathermap.org/geo/1.0/direct?q={{location}}&limit=1&appid={{API_KEY}}
 
 > {%
   client.global.set("LAT", response.body[0].lat);
