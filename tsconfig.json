@@ -12,12 +12,6 @@
     "strict": true,
     "allowImportingTsExtensions": false,
     "baseUrl": ".",
-    "paths": {
-      "@app/*": ["src/app/*"],
-      "@components/*": ["src/components/*"],
-      "@hooks/*": ["src/hooks/*"],
-      "@screens/*": ["src/screens/*"],
-      "@services/*": ["src/services/*"]
-    }
+    "typeRoots": ["node_modules/@types", "src/types"]
   }
 }
