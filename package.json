@@ -46,9 +46,15 @@
     "react-test-renderer": "19.0.0",
     "ts-jest": "^29.2.6",
     "typescript": "5.0.4",
+    "use-async-effect": "^2.2.7",
     "zod": "^3.24.2"
   },
   "engines": {
     "node": ">=18"
+  },
+  "overrides": {
+    "use-async-effect": {
+      "react": ">= 16.8.0"
+    }
   }
 }
