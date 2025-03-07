@@ -2,7 +2,10 @@ import React from 'react';
 import {StyleSheet, Text, View} from 'react-native';
 import {SafeAreaProvider, SafeAreaView} from 'react-native-safe-area-context';
 import {QueryClientProvider} from '../QueryClientProvider';
-import {useGetWeatherForLocation} from '../../features/weather';
+import {
+  useGetWeatherForLocation,
+  WEATHER_LOCATIONS,
+} from '../../features/weather';
 import {MSWProvider} from '../../msw';
 import {useCloseBootsplashOnMount} from './useCloseBootsplashOnMount';
 
@@ -15,7 +18,13 @@ export function App() {
         <SafeAreaProvider style={styles.container}>
           <SafeAreaView>
             <Text>Weather</Text>
-            <CurrentWeather locationName="Wrocław" locationCountryCode="pl" />
+            {WEATHER_LOCATIONS.map(({name, countryCode}) => (
+              <CurrentWeather
+                key={`${name},${countryCode}`}
+                locationName={name}
+                locationCountryCode={countryCode}
+              />
+            ))}
           </SafeAreaView>
         </SafeAreaProvider>
       </QueryClientProvider>
@@ -47,7 +56,7 @@ function CurrentWeather({
 
   return (
     <View>
-      <Text>{data?.name}</Text>
+      <Text>{data?.local_names?.pl ?? data?.name}</Text>
     </View>
   );
 }
