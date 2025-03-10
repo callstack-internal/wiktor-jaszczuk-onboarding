@@ -11,7 +11,6 @@
   "compilerOptions": {
     "strict": true,
     "allowImportingTsExtensions": false,
-    "baseUrl": ".",
-    "typeRoots": ["node_modules/@types", "src/types"]
+    "baseUrl": "."
   }
 }
