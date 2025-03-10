@@ -2,3 +2,4 @@ prettier $(git diff --cached --name-only --diff-filter=ACMR | sed 's| |\\ |g') -
 git update-index --again
 npm run tsc
 npm run lint
+npm run checkCyclicDependencies
