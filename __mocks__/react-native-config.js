@@ -1,4 +1,0 @@
-export const Config = {
-  OPEN_WEATHER_API_KEY: 'THIS_IS_SOME_MOCKED_OW_KEY',
-  MOCK_OPEN_WEATHER_API: '0',
-};

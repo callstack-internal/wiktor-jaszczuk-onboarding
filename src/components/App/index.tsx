@@ -11,7 +11,12 @@ export function App() {
     <MSWProvider>
       <QueryClientProvider>
         <SafeAreaProvider style={styles.container}>
-          <NavigationContainer onReady={() => BootSplash.hide({fade: true})} />
+          <NavigationContainer
+            onReady={() => {
+              console.log('BootSplash hide!');
+              BootSplash.hide({fade: true});
+            }}
+          />
         </SafeAreaProvider>
       </QueryClientProvider>
     </MSWProvider>
