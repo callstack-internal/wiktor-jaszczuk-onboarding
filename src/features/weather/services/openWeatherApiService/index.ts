@@ -1,3 +1,4 @@
+import {Config} from 'react-native-config';
 import {
   OPEN_WEATHER_API_URL,
   OPEN_WEATHER_CURRENT_WEATHER_ENDPOINT_URI,
@@ -8,7 +9,6 @@ import {
   geoEndpointResponseSchema,
   weatherEndpointResponseSchema,
 } from './zodSchemas';
-import {Config} from 'react-native-config';
 
 export class OpenWeatherApiService {
   private static instance: OpenWeatherApiService | undefined;
@@ -27,14 +27,14 @@ export class OpenWeatherApiService {
     this.apiKey = apiKey;
   }
 
-  public async resolveCoordinatesByLocationName(
-    locationName: string,
-    country: string,
-  ) {
+  public async resolveCoordinatesByLocationName({
+    locationName,
+    countryCode,
+  }: ResolveCoordinatesByLocationName) {
     const response = await this.fetchFromOpenWeather(
       OPEN_WEATHER_GEO_ENDPOINT_URI,
       {
-        q: [locationName, country].join(','),
+        q: [locationName, countryCode].join(','),
         limit: '1',
         appid: this.apiKey,
       },
@@ -47,18 +47,18 @@ export class OpenWeatherApiService {
     return responseCollection[0];
   }
 
-  public async getWeatherForLocation(
-    latitude: number,
-    longitude: number,
-    language: OWLanguage = 'en',
-    unitTypes: OWMetrics = 'metric',
-  ) {
+  public async getWeatherForLocation({
+    latitude,
+    longitude,
+    language,
+    unitTypes,
+  }: GetWeatherForLocation) {
     const response = await this.fetchFromOpenWeather(
       OPEN_WEATHER_CURRENT_WEATHER_ENDPOINT_URI,
       {
         lat: latitude.toString(10),
         lon: longitude.toString(10),
-        metrics: unitTypes,
+        units: unitTypes,
         lang: language,
         appid: this.apiKey,
       },
@@ -82,3 +82,15 @@ export class OpenWeatherApiService {
     return await response.json();
   }
 }
+
+type GetWeatherForLocation = {
+  latitude: number;
+  longitude: number;
+  language: OWLanguage;
+  unitTypes: OWMetrics;
+};
+
+type ResolveCoordinatesByLocationName = {
+  locationName: string;
+  countryCode: string;
+};

@@ -10,16 +10,21 @@ describe('OpenWeatherApiService', () => {
 
   it('resolveCoordinatesByLocationName returns some data', async () => {
     await expect(
-      OpenWeatherApiService.getInstance().resolveCoordinatesByLocationName(
-        'Wrocław',
-        'pl',
-      ),
+      OpenWeatherApiService.getInstance().resolveCoordinatesByLocationName({
+        locationName: 'Wrocław',
+        countryCode: 'pl',
+      }),
     ).resolves.toMatchSnapshot();
   });
 
   it('getWeatherForLocation returns some data', async () => {
     await expect(
-      OpenWeatherApiService.getInstance().getWeatherForLocation(17.76, -65.682),
+      OpenWeatherApiService.getInstance().getWeatherForLocation({
+        latitude: 17.76,
+        longitude: -65.682,
+        language: 'en',
+        unitTypes: 'metric',
+      }),
     ).resolves.toMatchSnapshot();
   });
 });
