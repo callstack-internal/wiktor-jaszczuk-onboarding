@@ -12,9 +12,10 @@ export function App() {
       <QueryClientProvider>
         <SafeAreaProvider style={styles.container}>
           <NavigationContainer
-            onReady={() => {
+            onReady={async () => {
               console.log('BootSplash hide!');
-              BootSplash.hide({fade: true});
+              await BootSplash.hide({fade: true});
+              console.log('after hide!');
             }}
           />
         </SafeAreaProvider>
