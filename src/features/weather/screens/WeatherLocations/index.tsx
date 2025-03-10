@@ -1,9 +1,12 @@
 import {useNavigation} from '@react-navigation/native';
 import type {NativeStackNavigationProp} from '@react-navigation/native-stack';
-import {FlashList} from '@shopify/flash-list';
-import type {ListRenderItemInfo} from '@shopify/flash-list/src/FlashListProps';
 import React, {useCallback} from 'react';
-import {StyleSheet, View} from 'react-native';
+import {
+  FlatList,
+  type ListRenderItemInfo,
+  StyleSheet,
+  View,
+} from 'react-native';
 import {type Edges, SafeAreaView} from 'react-native-safe-area-context';
 import {
   HARDCODED_LANGUAGE,
@@ -44,8 +47,7 @@ export function WeatherLocations() {
 
   return (
     <SafeAreaView style={styles.container} edges={safeAreaViewEdges}>
-      <FlashList
-        estimatedItemSize={80}
+      <FlatList
         data={WEATHER_LOCATIONS}
         renderItem={renderItem}
         ItemSeparatorComponent={ListSeparator}
