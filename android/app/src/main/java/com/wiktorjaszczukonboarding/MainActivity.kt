@@ -27,7 +27,7 @@ class MainActivity : ReactActivity() {
   // START: react-native-bootsplash
   override fun onCreate(savedInstanceState: Bundle?) {
     RNBootSplash.init(this, R.style.BootTheme)
-    super.onCreate(savedInstanceState)
+    super.onCreate(null)
   }
   // END: react-native-bootsplash
 }

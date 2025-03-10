@@ -16,9 +16,11 @@
     "checkCyclicDependencies": "madge --circular index.ts"
   },
   "dependencies": {
+    "@react-navigation/native": "^7.0.15",
     "react": "19.0.0",
     "react-native": "0.78.0",
-    "react-native-bootsplash": "^6.3.3"
+    "react-native-bootsplash": "^6.3.3",
+    "react-native-screens": "^4.9.1"
   },
   "devDependencies": {
     "@babel/core": "^7.25.2",
@@ -32,6 +34,9 @@
     "@react-native/eslint-config": "0.78.0",
     "@react-native/metro-config": "0.78.0",
     "@react-native/typescript-config": "0.78.0",
+    "@react-navigation/elements": "^2.2.6",
+    "@react-navigation/native-stack": "^7.2.1",
+    "@shopify/flash-list": "^1.7.3",
     "@tanstack/react-query": "^5.67.1",
     "@testing-library/react-native": "^13.1.0",
     "@types/jest": "^29.5.13",
@@ -49,7 +54,7 @@
     "react-native-url-polyfill": "^2.0.0",
     "react-test-renderer": "19.0.0",
     "ts-jest": "^29.2.6",
-    "typescript": "5.0.4",
+    "typescript": "^5.8.2",
     "use-async-effect": "^2.2.7",
     "zod": "^3.24.2"
   },

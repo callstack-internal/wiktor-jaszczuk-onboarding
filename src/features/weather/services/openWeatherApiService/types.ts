@@ -1,5 +1,5 @@
-import {geoEndpointResponseSchema} from './zodSchemas';
 import z from 'zod';
+import {geoEndpointResponseSchema} from './zodSchemas';
 
 export type OWMetrics = 'standard' | 'metric' | 'imperial';
 export type OWLanguage = keyof z.infer<
