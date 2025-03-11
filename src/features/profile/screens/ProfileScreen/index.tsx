@@ -1,12 +1,10 @@
 import {Text} from 'react-native';
-import {type Edges, SafeAreaView} from 'react-native-safe-area-context';
+import {Content} from '../../../../components/Content';
 
 export function ProfileScreen() {
   return (
-    <SafeAreaView edges={edges}>
+    <Content>
       <Text>Profile Screen</Text>
-    </SafeAreaView>
+    </Content>
   );
 }
-
-const edges: Edges = ['bottom'];
