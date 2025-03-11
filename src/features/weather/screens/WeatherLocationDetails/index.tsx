@@ -1,15 +1,14 @@
 import {type StaticScreenProps, useNavigation} from '@react-navigation/native';
-import {useEffect} from 'react';
-import {StyleSheet} from 'react-native';
+import {useCallback} from 'react';
+import {Button, StyleSheet, View} from 'react-native';
 import {type Edges, SafeAreaView} from 'react-native-safe-area-context';
 import {CurrentWeatherBasicLocationInfo} from '../../components/CurrentWeatherBasicLocationInfo';
-import {HARDCODED_LANGUAGE} from '../../constants/defaults';
 import {getTemperatureUnit} from '../../helpers/getTemperatureUnit';
+import {type Weather} from '../../hooks/useGetWeatherForLocation';
 import type {
   OWLanguage,
   OWMetrics,
 } from '../../services/openWeatherApiService/types';
-import {type Weather} from '../../hooks/useGetWeatherForLocation';
 import {WeatherDetailEntry} from './WeatherDetailEntry';
 
 export function WeatherLocationDetails({
@@ -19,11 +18,9 @@ export function WeatherLocationDetails({
 }: StaticScreenProps<Weather & {unit: OWMetrics; language: OWLanguage}>) {
   const navigation = useNavigation();
 
-  useEffect(() => {
-    navigation.setOptions({
-      title: weather.local_names[HARDCODED_LANGUAGE] ?? weather.name,
-    });
-  }, [navigation, weather.local_names, weather.name]);
+  const onGoBackPressed = useCallback(() => {
+    navigation.goBack();
+  }, [navigation]);
 
   return (
     <SafeAreaView edges={safeAreaViewEdges} style={styles.container}>
@@ -62,6 +59,9 @@ export function WeatherLocationDetails({
         value={weather.clouds.all}
         unit="%"
       />
+      <View style={styles.buttonContainer}>
+        <Button title="Go back" onPress={onGoBackPressed} />
+      </View>
     </SafeAreaView>
   );
 }
@@ -70,4 +70,5 @@ const safeAreaViewEdges: Edges = ['bottom'];
 
 const styles = StyleSheet.create({
   container: {flex: 1, padding: 10},
+  buttonContainer: {marginTop: 20},
 });
