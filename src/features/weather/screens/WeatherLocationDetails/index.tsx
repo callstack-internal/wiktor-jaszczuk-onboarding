@@ -1,7 +1,7 @@
 import {type StaticScreenProps, useNavigation} from '@react-navigation/native';
 import {useCallback} from 'react';
 import {Button, StyleSheet, View} from 'react-native';
-import {type Edges, SafeAreaView} from 'react-native-safe-area-context';
+import {Content} from '../../../../components/Content';
 import {CurrentWeatherBasicLocationInfo} from '../../components/CurrentWeatherBasicLocationInfo';
 import {getTemperatureUnit} from '../../helpers/getTemperatureUnit';
 import {type Weather} from '../../hooks/useGetWeatherForLocation';
@@ -23,7 +23,7 @@ export function WeatherLocationDetails({
   }, [navigation]);
 
   return (
-    <SafeAreaView edges={safeAreaViewEdges} style={styles.container}>
+    <Content>
       <CurrentWeatherBasicLocationInfo
         weather={weather}
         unit={unit}
@@ -62,13 +62,10 @@ export function WeatherLocationDetails({
       <View style={styles.buttonContainer}>
         <Button title="Go back" onPress={onGoBackPressed} />
       </View>
-    </SafeAreaView>
+    </Content>
   );
 }
 
-const safeAreaViewEdges: Edges = ['bottom'];
-
 const styles = StyleSheet.create({
-  container: {flex: 1, padding: 10},
   buttonContainer: {marginTop: 20},
 });

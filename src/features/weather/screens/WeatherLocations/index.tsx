@@ -3,7 +3,7 @@ import {FlashList} from '@shopify/flash-list';
 import type {ListRenderItemInfo} from '@shopify/flash-list/src/FlashListProps';
 import React, {useCallback} from 'react';
 import {StyleSheet, View} from 'react-native';
-import {type Edges, SafeAreaView} from 'react-native-safe-area-context';
+import {Content} from '../../../../components/Content';
 import {
   HARDCODED_LANGUAGE,
   HARDCODED_UNIT_TYPE,
@@ -37,25 +37,22 @@ export function WeatherLocations() {
   );
 
   return (
-    <SafeAreaView style={styles.container} edges={safeAreaViewEdges}>
+    <Content>
       <FlashList
         estimatedItemSize={80}
         data={WEATHER_LOCATIONS}
         renderItem={renderItem}
         ItemSeparatorComponent={ListSeparator}
       />
-    </SafeAreaView>
+    </Content>
   );
 }
-
-const safeAreaViewEdges: Edges = ['bottom'];
 
 function ListSeparator() {
   return <View style={styles.listSeparator} />;
 }
 
 const styles = StyleSheet.create({
-  container: {flex: 1, padding: 10},
   listSeparator: {
     borderBottomWidth: 1,
     borderBottomColor: 'black',
