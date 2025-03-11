@@ -10,7 +10,9 @@ import {AppState} from 'react-native';
 
 const queryClient = new QueryClient();
 
-export function QueryClientProvider({children}: React.PropsWithChildren) {
+export function QueryClientProvider({
+  children,
+}: React.PropsWithRequiredChildren) {
   useEffect(() => {
     onlineManager.setEventListener(setOnline =>
       NetInfo.addEventListener(state => setOnline(Boolean(state.isConnected))),

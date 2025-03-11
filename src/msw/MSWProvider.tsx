@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 import {Config} from 'react-native-config';
 import {useAsyncEffect} from 'use-async-effect';
 
-export function MSWProvider({children}: React.PropsWithChildren) {
+export function MSWProvider({children}: React.PropsWithRequiredChildren) {
   const [isInitialized, setIsInitialized] = useState(false);
 
   useAsyncEffect(async isMounted => {
