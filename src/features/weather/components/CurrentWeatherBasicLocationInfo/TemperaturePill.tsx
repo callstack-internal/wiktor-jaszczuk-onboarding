@@ -3,7 +3,7 @@ import {StyleSheet, Text, View, type ViewProps} from 'react-native';
 import {getTemperatureUnit} from '../../helpers/getTemperatureUnit';
 import type {OWMetrics} from '../../services/openWeatherApiService/types';
 
-interface TemperaturePillProps extends ViewProps {
+interface TemperaturePillProps extends React.PropsWithNoChildren<ViewProps> {
   value: number;
   height: number;
   unit: OWMetrics;
