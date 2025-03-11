@@ -1,5 +1,4 @@
 import {useNavigation} from '@react-navigation/native';
-import type {NativeStackNavigationProp} from '@react-navigation/native-stack';
 import {FlashList} from '@shopify/flash-list';
 import type {ListRenderItemInfo} from '@shopify/flash-list/src/FlashListProps';
 import React, {useCallback} from 'react';
@@ -14,12 +13,7 @@ import {CurrentWeatherLocationListEntry} from './CurrentWeatherLocationListEntry
 
 export function WeatherLocations() {
   const navigation =
-    useNavigation<
-      NativeStackNavigationProp<
-        ReactNavigation.RootParamList,
-        'WeatherLocations'
-      >
-    >();
+    useNavigation<ReactNavigation.WeatherNavigationProp<'WeatherLocations'>>();
 
   const renderItem = useCallback(
     ({
