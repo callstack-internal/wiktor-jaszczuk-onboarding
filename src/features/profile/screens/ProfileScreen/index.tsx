@@ -9,4 +9,4 @@ export function ProfileScreen() {
   );
 }
 
-const edges: Edges = ['top'];
+const edges: Edges = ['bottom'];

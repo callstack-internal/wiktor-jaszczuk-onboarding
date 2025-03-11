@@ -7,27 +7,26 @@ import {
   createNativeStackNavigator,
   type NativeStackNavigationProp,
 } from '@react-navigation/native-stack';
-import {screens as weatherScreens} from '../../features/weather';
 import {screens as profileScreens} from '../../features/profile';
+import {screens as weatherScreens} from '../../features/weather';
 
 const WeatherStack = createNativeStackNavigator({
   initialRouteName: 'WeatherLocations',
   screens: {
-    WeatherLocations: {
-      screen: weatherScreens.WeatherLocations,
-      options: {
-        title: 'Locations',
-      },
-    },
+    WeatherLocations: weatherScreens.WeatherLocations,
     WeatherLocationDetails: weatherScreens.WeatherLocationDetails,
+  },
+  screenOptions: {
+    headerShown: false,
   },
 });
 
 const RootNavigator = createDrawerNavigator({
   screens: {
-    Home: WeatherStack,
+    Home: {screen: WeatherStack, options: {title: 'Weather'}},
     Profile: profileScreens.ProfileScreen,
   },
+  backBehavior: 'none',
 });
 
 export const NavigationContainer = createStaticNavigation(RootNavigator);
