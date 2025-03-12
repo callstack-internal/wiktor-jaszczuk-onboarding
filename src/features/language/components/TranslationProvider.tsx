@@ -1,18 +1,25 @@
+import type {i18n} from 'i18next';
 import {useState} from 'react';
 import {useAsyncEffect} from 'use-async-effect';
-import {getI18nInstance} from '../i18next/config';
+import {I18nextProvider} from 'react-i18next';
+import {getI18nInstance, type SupportedLanguage} from '../i18next/config';
 
 export function TranslationProvider({
   children,
-}: React.PropsWithRequiredChildren) {
-  const [isInitialized, setIsInitialized] = useState(false);
+  defaultLanguage,
+}: React.PropsWithRequiredChildren<{defaultLanguage?: SupportedLanguage}>) {
+  const [i18Next, setI18Next] = useState<i18n | undefined>(undefined);
 
   useAsyncEffect(async isMounted => {
-    await getI18nInstance();
+    const instance = await getI18nInstance(defaultLanguage);
     if (isMounted()) {
-      setIsInitialized(true);
+      setI18Next(instance);
     }
   }, []);
 
-  return isInitialized && children;
+  return (
+    i18Next !== undefined && (
+      <I18nextProvider i18n={i18Next}>{children}</I18nextProvider>
+    )
+  );
 }
