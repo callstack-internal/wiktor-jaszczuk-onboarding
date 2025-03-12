@@ -2,12 +2,16 @@ import {useState} from 'react';
 import {Content} from '../../../../components/Content';
 import {Dropdown} from 'react-native-element-dropdown';
 import {Text} from 'react-native';
+import {useTranslation} from '../../../language';
+
 export function ProfileScreen() {
   const [language, setLanguage] = useState<AppLanguage>('en');
 
+  const {t} = useTranslation('profile');
+
   return (
     <Content>
-      <Text>Select Language:</Text>
+      <Text>{t('label.selectLanguage')}</Text>
       <Dropdown
         value={language}
         data={dropdownItems}
