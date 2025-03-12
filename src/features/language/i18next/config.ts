@@ -14,11 +14,22 @@ export const resources = {
 
 let instance: ReturnType<typeof initI18Next> | undefined;
 
-export function getI18nInstance() {
+export async function getI18nInstance() {
   if (instance === undefined) {
     instance = initI18Next();
   }
-  return instance;
+  return await instance;
+}
+
+export async function changeLanguage(
+  language?: (typeof supportedLngs)[number],
+) {
+  instance = i18next.changeLanguage(language);
+  await instance;
+}
+
+export function getCurrentLanguage() {
+  return i18next.language;
 }
 
 function initI18Next() {
