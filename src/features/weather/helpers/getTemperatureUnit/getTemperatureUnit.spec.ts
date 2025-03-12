@@ -14,4 +14,10 @@ describe('getTemperatureUnit', () => {
       expect(getTemperatureUnit(unit)).toEqual(expectedValue);
     },
   );
+
+  it("when given unexpected init, it'll throw exception", () => {
+    expect(() => getTemperatureUnit('banana')).toThrow(
+      "Didn't expect to get here",
+    );
+  });
 });

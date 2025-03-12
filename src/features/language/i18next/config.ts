@@ -5,39 +5,62 @@ import profilePl from './translations/profile.pl.json';
 import weatherEn from './translations/weather.en.json';
 import weatherPl from './translations/weather.pl.json';
 
-export const supportedLngs = ['pl', 'en'] as const;
+export const supportedLanguages = ['pl', 'en'] as const;
+export type SupportedLanguage = (typeof supportedLanguages)[number] | 'cimode';
 
 export const resources = {
   en: {profile: profileEn, weather: weatherEn},
   pl: {profile: profilePl, weather: weatherPl},
 } as const;
 
-let instance: ReturnType<typeof initI18Next> | undefined;
+let i18NextInstanceIterator:
+  | undefined
+  | ReturnType<typeof i18NextInstanceIGenerator>;
 
-export async function getI18nInstance() {
-  if (instance === undefined) {
-    instance = initI18Next();
-  }
-  return await instance;
-}
-
-export async function changeLanguage(
-  language?: (typeof supportedLngs)[number],
+export async function getI18nInstance(
+  defaultLanguage: SupportedLanguage | undefined = undefined,
 ) {
-  instance = i18next.changeLanguage(language);
-  await instance;
+  if (i18NextInstanceIterator === undefined) {
+    i18NextInstanceIterator = i18NextInstanceIGenerator(defaultLanguage);
+  }
+
+  const {value} = await i18NextInstanceIterator.next();
+  return value;
 }
 
-export function getCurrentLanguage() {
-  return i18next.language;
+export async function resetI18nInstance() {
+  i18NextInstanceIterator = undefined;
 }
 
-function initI18Next() {
-  return i18next.use(initReactI18next).init({
-    supportedLngs,
+export async function changeLanguage(language?: SupportedLanguage) {
+  const instance = await getI18nInstance();
+
+  await instance.changeLanguage(language);
+}
+
+export async function getCurrentLanguage() {
+  const instance = await getI18nInstance();
+  return instance.language as unknown as SupportedLanguage;
+}
+
+async function* i18NextInstanceIGenerator(
+  defaultLanguage: SupportedLanguage | undefined = undefined,
+) {
+  const instance = i18next.createInstance();
+
+  await instance.use(initReactI18next).init({
+    supportedLngs: supportedLanguages,
     fallbackLng: 'en',
-    lng: 'pl',
+    lng: defaultLanguage,
     debug: __DEV__,
     resources,
-  });
+    saveMissing: false,
+    appendNamespaceToCIMode: true,
+  } as const);
+
+  while (1) {
+    yield instance;
+  }
+  // eslint-disable-next-line no-unreachable
+  return instance;
 }
