@@ -1,0 +1,16 @@
+{
+  "extends": "@react-native/typescript-config/tsconfig.json",
+  "compilerOptions": {
+    "noEmit": true,
+    "strict": true,
+    "allowImportingTsExtensions": false
+  },
+  "exclude": [
+    "./jest.config.js",
+    "./jest.setup.js",
+    "./.eslintrc.js",
+    "./.prettierrc.js",
+    "./babel.config.js",
+    "./metro.config.js"
+  ]
+}
