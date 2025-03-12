@@ -10,7 +10,6 @@
   ],
   "compilerOptions": {
     "strict": true,
-    "allowImportingTsExtensions": false,
-    "baseUrl": "."
+    "allowImportingTsExtensions": false
   }
 }
