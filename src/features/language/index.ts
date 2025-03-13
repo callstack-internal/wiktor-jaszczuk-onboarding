@@ -7,7 +7,6 @@ export {
   getI18nInstance,
   changeLanguage,
   getCurrentLanguage,
-  parseLanguageCode,
   type SupportedLanguage,
 } from './i18next/config';
 export {useTranslation, withTranslation, Translation} from 'react-i18next';

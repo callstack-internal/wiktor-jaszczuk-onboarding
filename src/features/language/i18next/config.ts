@@ -41,7 +41,7 @@ export async function changeLanguage(language?: SupportedLanguage) {
 
 export async function getCurrentLanguage() {
   const instance = await getI18nInstance();
-  return instance.language as unknown as SupportedLanguage;
+  return parseLanguageCode(instance.language);
 }
 
 export function parseLanguageCode(language: string) {
