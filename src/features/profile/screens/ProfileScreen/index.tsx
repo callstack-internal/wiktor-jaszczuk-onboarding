@@ -1,4 +1,4 @@
-import {useState} from 'react';
+import {useCallback, useMemo, useState} from 'react';
 import {Text} from 'react-native';
 import {Dropdown} from 'react-native-element-dropdown';
 import {useAsyncEffect} from 'use-async-effect';
@@ -7,10 +7,12 @@ import {
   changeLanguage,
   getCurrentLanguage,
   type SupportedLanguage,
+  supportedLanguages,
   useTranslation,
 } from '../../../language';
 
 export function ProfileScreen() {
+  const {t} = useTranslation('profile');
   const [language, setLanguage] = useState<undefined | SupportedLanguage>(
     undefined,
   );
@@ -22,7 +24,19 @@ export function ProfileScreen() {
     }
   }, []);
 
-  const {t} = useTranslation('profile');
+  const onLanguageSelectionChanged = useCallback(
+    (item: (typeof dropdownItems)[number]) => changeLanguage(item.value),
+    [],
+  );
+
+  const dropdownItems: {label: string; value: SupportedLanguage}[] = useMemo(
+    () =>
+      supportedLanguages.map(supportedLanguage => ({
+        label: t(`languageSelector.${supportedLanguage}`),
+        value: supportedLanguage,
+      })),
+    [t],
+  );
 
   return (
     <Content>
@@ -34,17 +48,10 @@ export function ProfileScreen() {
             data={dropdownItems}
             labelField="label"
             valueField="value"
-            onChange={(item: (typeof dropdownItems)[number]) =>
-              changeLanguage(item.value)
-            }
+            onChange={onLanguageSelectionChanged}
           />
         </>
       )}
     </Content>
   );
 }
-
-const dropdownItems: {label: string; value: SupportedLanguage}[] = [
-  {label: 'Polski', value: 'pl'},
-  {label: 'English', value: 'en'},
-];
