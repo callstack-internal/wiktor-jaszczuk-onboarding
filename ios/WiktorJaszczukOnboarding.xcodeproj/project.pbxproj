@@ -15,6 +15,7 @@
 		9D058E72029B44DD82290F79 /* Config.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 68661CB52AF1406A982DC83B /* Config.xcconfig */; };
 		AA3283E3C6384DBEACF0B18E /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CF8AC291B4A540AD8D633C4F /* Colors.xcassets */; };
 		E73895482D783A5600719C90 /* icons.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E73895472D783A5600719C90 /* icons.xcassets */; };
+		E75AB1B62D82D322007D5901 /* Localization.strings in Resources */ = {isa = PBXBuildFile; fileRef = E75AB1B42D82D322007D5901 /* Localization.strings */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -25,11 +26,13 @@
 		3B4392A12AC88292D35C810B /* Pods-WiktorJaszczukOnboarding.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WiktorJaszczukOnboarding.debug.xcconfig"; path = "Target Support Files/Pods-WiktorJaszczukOnboarding/Pods-WiktorJaszczukOnboarding.debug.xcconfig"; sourceTree = "<group>"; };
 		5709B34CF0A7D63546082F79 /* Pods-WiktorJaszczukOnboarding.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WiktorJaszczukOnboarding.release.xcconfig"; path = "Target Support Files/Pods-WiktorJaszczukOnboarding/Pods-WiktorJaszczukOnboarding.release.xcconfig"; sourceTree = "<group>"; };
 		5DCACB8F33CDC322A6C60F78 /* libPods-WiktorJaszczukOnboarding.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-WiktorJaszczukOnboarding.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		68661CB52AF1406A982DC83B /* Config.xcconfig */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 4; includeInIndex = 0; lastKnownFileType = text.xcconfig; name = Config.xcconfig; path = Config.xcconfig; sourceTree = "<group>"; };
+		68661CB52AF1406A982DC83B /* Config.xcconfig */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 4; includeInIndex = 0; lastKnownFileType = text.xcconfig; path = Config.xcconfig; sourceTree = "<group>"; };
 		761780EC2CA45674006654EE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AppDelegate.swift; path = WiktorJaszczukOnboarding/AppDelegate.swift; sourceTree = "<group>"; };
 		82267455D6154BD59DAA4C17 /* BootSplash.storyboard */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = BootSplash.storyboard; path = WiktorJaszczukOnboarding/BootSplash.storyboard; sourceTree = "<group>"; };
 		CF8AC291B4A540AD8D633C4F /* Colors.xcassets */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = folder.assetcatalog; name = Colors.xcassets; path = WiktorJaszczukOnboarding/Colors.xcassets; sourceTree = "<group>"; };
 		E73895472D783A5600719C90 /* icons.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = icons.xcassets; path = WiktorJaszczukOnboarding/icons.xcassets; sourceTree = "<group>"; };
+		E75AB1B52D82D322007D5901 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localization.strings; sourceTree = "<group>"; };
+		E75AB1B72D82D336007D5901 /* pl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = pl; path = pl.lproj/Localization.strings; sourceTree = "<group>"; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
@@ -55,6 +58,7 @@
 				13B07FB81A68108700A75B9A /* PrivacyInfo.xcprivacy */,
 				82267455D6154BD59DAA4C17 /* BootSplash.storyboard */,
 				CF8AC291B4A540AD8D633C4F /* Colors.xcassets */,
+				E75AB1B42D82D322007D5901 /* Localization.strings */,
 			);
 			name = WiktorJaszczukOnboarding;
 			sourceTree = "<group>";
@@ -151,6 +155,7 @@
 			knownRegions = (
 				en,
 				Base,
+				pl,
 			);
 			mainGroup = 83CBB9F61A601CBA00E9B192;
 			productRefGroup = 83CBBA001A601CBA00E9B192 /* Products */;
@@ -169,6 +174,7 @@
 			files = (
 				9D058E72029B44DD82290F79 /* Config.xcconfig in Resources */,
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
+				E75AB1B62D82D322007D5901 /* Localization.strings in Resources */,
 				4CB7517516F50BCEAD948973 /* PrivacyInfo.xcprivacy in Resources */,
 				4FF55823C8E146929A600455 /* BootSplash.storyboard in Resources */,
 				AA3283E3C6384DBEACF0B18E /* Colors.xcassets in Resources */,
@@ -263,6 +269,18 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		E75AB1B42D82D322007D5901 /* Localization.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				E75AB1B52D82D322007D5901 /* en */,
+				E75AB1B72D82D336007D5901 /* pl */,
+			);
+			name = Localization.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		13B07F941A680F5B00A75B9A /* Debug */ = {
