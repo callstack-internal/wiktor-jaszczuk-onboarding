@@ -1,5 +1,10 @@
 {
+  "stackTitle": "Settings",
   "label": {
     "selectLanguage": "Select language"
+  },
+  "languageSelector": {
+    "pl": "Polski",
+    "en": "English"
   }
 }

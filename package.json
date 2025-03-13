@@ -57,6 +57,7 @@
     "react-native-config": "^1.5.5",
     "react-native-element-dropdown": "^2.12.4",
     "react-native-gesture-handler": "^2.24.0",
+    "react-native-localization-settings": "^1.2.0",
     "react-native-reanimated": "^3.17.1",
     "react-native-safe-area-context": "^5.3.0",
     "react-native-url-polyfill": "^2.0.0",

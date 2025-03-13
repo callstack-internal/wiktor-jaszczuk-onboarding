@@ -4,6 +4,7 @@ import profileEn from './translations/profile.en.json';
 import profilePl from './translations/profile.pl.json';
 import weatherEn from './translations/weather.en.json';
 import weatherPl from './translations/weather.pl.json';
+import {createLanguageDetector} from 'react-native-localization-settings';
 
 export const supportedLanguages = ['pl', 'en'] as const;
 export type SupportedLanguage = (typeof supportedLanguages)[number] | 'cimode';
@@ -43,20 +44,43 @@ export async function getCurrentLanguage() {
   return instance.language as unknown as SupportedLanguage;
 }
 
+export function parseLanguageCode(language: string) {
+  const grouped = /^([a-z]{2})(-[a-zA-Z]{2,3})?$/.exec(language);
+  const parsedLanguage = (grouped && grouped[1]) || undefined;
+  return isSupportedLanguage(parsedLanguage) ? parsedLanguage : undefined;
+}
+
+function isSupportedLanguage(
+  languageToTest: string | undefined,
+): languageToTest is SupportedLanguage {
+  return languageToTest === undefined
+    ? false
+    : (supportedLanguages as unknown as unknown[]).includes(languageToTest);
+}
+
 async function* i18NextInstanceIGenerator(
   defaultLanguage: SupportedLanguage | undefined = undefined,
 ) {
   const instance = i18next.createInstance();
 
-  await instance.use(initReactI18next).init({
-    supportedLngs: supportedLanguages,
-    fallbackLng: 'en',
-    lng: defaultLanguage,
-    debug: __DEV__,
-    resources,
-    saveMissing: false,
-    appendNamespaceToCIMode: true,
-  } as const);
+  const languageDetector = createLanguageDetector({
+    async: false,
+  });
+
+  await instance
+    .use(languageDetector)
+    .use(initReactI18next)
+    .init({
+      nonExplicitSupportedLngs: true,
+      lowerCaseLng: true,
+      supportedLngs: supportedLanguages,
+      fallbackLng: 'en',
+      lng: defaultLanguage,
+      debug: __DEV__,
+      resources,
+      saveMissing: false,
+      appendNamespaceToCIMode: true,
+    } as const);
 
   while (1) {
     yield instance;

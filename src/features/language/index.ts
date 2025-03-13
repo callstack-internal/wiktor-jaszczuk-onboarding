@@ -1,9 +1,14 @@
+import {useTranslation} from 'react-i18next';
+
+export type TranslationFn = ReturnType<typeof useTranslation>['t'];
+
 export {
   supportedLanguages,
   getI18nInstance,
   changeLanguage,
   getCurrentLanguage,
+  parseLanguageCode,
   type SupportedLanguage,
 } from './i18next/config';
-export {useTranslation} from 'react-i18next';
+export {useTranslation, withTranslation, Translation} from 'react-i18next';
 export {TranslationProvider} from './components/TranslationProvider';

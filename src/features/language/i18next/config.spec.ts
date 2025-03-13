@@ -2,6 +2,7 @@ import {
   changeLanguage,
   getCurrentLanguage,
   getI18nInstance,
+  parseLanguageCode,
   resetI18nInstance,
   supportedLanguages,
 } from './config';
@@ -43,5 +44,28 @@ describe('i18next config', () => {
 
     expect(languageBeforeTest).toEqual('en');
     expect(await getCurrentLanguage()).toEqual('cimode');
+  });
+
+  describe('parseLanguage', () => {
+    it.each([
+      ['pl', 'pl'],
+      ['en', 'en'],
+      ['pl-PL', 'pl'],
+      ['pl-pl', 'pl'],
+      ['en-UK', 'en'],
+      ['en-US', 'en'],
+    ] as const)(
+      'parseLanguage code for %s will return supported language %s',
+      (testLanguage, expectedResult) => {
+        expect(parseLanguageCode(testLanguage)).toEqual(expectedResult);
+      },
+    );
+
+    it.each(['fr', 'fr-FR'] as const)(
+      'parseLanguage code for %s will return supported undefined',
+      testLanguage => {
+        expect(parseLanguageCode(testLanguage)).toBeUndefined();
+      },
+    );
   });
 });
