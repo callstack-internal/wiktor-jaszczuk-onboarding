@@ -1,3 +1,20 @@
 {
-  "stackTitle": "Weather"
+  "stackTitle": "Weather",
+  "loading": "Loading...",
+  "metrics": {
+    "temperature": "Temperature",
+    "feelsLike": "Feels like",
+    "pressure": "Pressure",
+    "windSpeed": "Wind speed",
+    "humidity": "Humidity",
+    "cloudCover": "Cloud cover"
+  },
+  "buttons": {
+    "goBack": "Go back"
+  },
+  "units": {
+    "percent": "%",
+    "hPa": "hPa",
+    "mph": "mph"
+  }
 }

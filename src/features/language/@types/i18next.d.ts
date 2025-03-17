@@ -2,7 +2,7 @@ import {
   resources,
   type SupportedLanguage,
   supportedLanguages,
-} from '../i18next/config';
+} from '../i18next';
 
 declare module 'i18next' {
   interface CustomTypeOptions {

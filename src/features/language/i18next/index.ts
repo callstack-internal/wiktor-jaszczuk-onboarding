@@ -1,13 +1,13 @@
 import i18next from 'i18next';
 import {initReactI18next} from 'react-i18next';
+import {createLanguageDetector} from 'react-native-localization-settings';
 import profileEn from './translations/profile.en.json';
 import profilePl from './translations/profile.pl.json';
 import weatherEn from './translations/weather.en.json';
 import weatherPl from './translations/weather.pl.json';
-import {createLanguageDetector} from 'react-native-localization-settings';
 
 export const supportedLanguages = ['pl', 'en'] as const;
-export type SupportedLanguage = (typeof supportedLanguages)[number] | 'cimode';
+export type SupportedLanguage = (typeof supportedLanguages)[number];
 
 export const resources = {
   en: {profile: profileEn, weather: weatherEn},
@@ -35,7 +35,6 @@ export async function resetI18nInstance() {
 
 export async function changeLanguage(language?: SupportedLanguage) {
   const instance = await getI18nInstance();
-
   await instance.changeLanguage(language);
 }
 

@@ -5,13 +5,15 @@ export function WeatherDetailEntry({
   value,
   name,
   unit,
+  isLast,
 }: {
   name: string;
   value: number;
   unit: string;
+  isLast?: true;
 }) {
   return (
-    <View style={styles.container}>
+    <View style={[styles.container, isLast && styles.noBottomBorder]}>
       <Text>{name}</Text>
       <Text style={styles.value}>{`${value} ${unit}`}</Text>
     </View>
@@ -26,6 +28,9 @@ const styles = StyleSheet.create({
     borderBottomColor: 'black',
     alignItems: 'center',
     justifyContent: 'space-between',
+  },
+  noBottomBorder: {
+    borderBottomWidth: 0,
   },
   value: {opacity: 0.5},
 });

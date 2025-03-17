@@ -1,5 +1,4 @@
 import {render} from '@testing-library/react-native';
-import {OW_LANGUAGES} from '../../constants/languages';
 import type {Weather} from '../../hooks/useGetWeatherForLocation';
 import type {OWMetrics} from '../../services/openWeatherApiService/types';
 import {CurrentWeatherBasicLocationInfo} from './index';
@@ -10,29 +9,10 @@ describe('CurrentWeatherBasicLocationInfo', () => {
   it.each(METRICS)('Given UnitType: %s, then it will match snapshot', unit => {
     expect(
       render(
-        <CurrentWeatherBasicLocationInfo
-          weather={WEATHER_MOCK}
-          unit={unit}
-          language="en"
-        />,
+        <CurrentWeatherBasicLocationInfo weather={WEATHER_MOCK} unit={unit} />,
       ),
     ).toMatchSnapshot();
   });
-
-  it.each(OW_LANGUAGES)(
-    'Given Language: %s, then it will match snapshot',
-    language => {
-      expect(
-        render(
-          <CurrentWeatherBasicLocationInfo
-            weather={WEATHER_MOCK}
-            unit="metric"
-            language={language}
-          />,
-        ),
-      ).toMatchSnapshot();
-    },
-  );
 });
 
 const WEATHER_MOCK: Weather = {
