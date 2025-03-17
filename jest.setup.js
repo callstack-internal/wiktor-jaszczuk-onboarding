@@ -9,6 +9,13 @@ setUpTests();
 jest.mock('@react-native-community/netinfo', () => mockRNCNetInfo);
 jest.mock('react-native-safe-area-context', () => mockSafeAreaContext);
 
+jest.mock('react-native-localization-settings', () => ({
+  createLanguageDetector: jest.fn(() => ({
+    type: '3rdParty',
+    init: jest.fn(),
+  })),
+}));
+
 beforeAll(() => server.listen());
 afterEach(() => server.resetHandlers());
 afterAll(() => server.close());

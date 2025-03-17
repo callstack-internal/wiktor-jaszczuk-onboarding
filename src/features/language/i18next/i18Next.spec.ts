@@ -13,8 +13,8 @@ describe('i18next config', () => {
   });
 
   it('getI18nInstance will return the same instance', async () => {
-    const instance = await getI18nInstance();
-    const instance2 = await getI18nInstance();
+    const instance = await getI18nInstance('cimode');
+    const instance2 = await getI18nInstance('cimode');
 
     expect(instance).toEqual(instance2);
   });
@@ -40,10 +40,10 @@ describe('i18next config', () => {
   it('changeLanguage will change saved language', async () => {
     await getI18nInstance('en');
     const languageBeforeTest = await getCurrentLanguage();
-    await changeLanguage('cimode');
+    await changeLanguage('pl');
 
     expect(languageBeforeTest).toEqual('en');
-    expect(await getCurrentLanguage()).toEqual('cimode');
+    expect(await getCurrentLanguage()).toEqual('pl');
   });
 
   describe('parseLanguage', () => {
