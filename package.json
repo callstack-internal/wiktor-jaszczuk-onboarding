@@ -14,7 +14,7 @@
     "test:ci": "jest --ci --all --testTimeout=10000 --silent --bail=1",
     "prepare": "husky",
     "podinstall": "bundle install && cd ios && bundle exec pod install",
-    "tsc": "tsc --noEmit",
+    "tsc": "tsc --noEmit -p tsconfig.tests.json ; tsc --noEmit",
     "checkCyclicDependencies": "madge --circular index.ts"
   },
   "dependencies": {
