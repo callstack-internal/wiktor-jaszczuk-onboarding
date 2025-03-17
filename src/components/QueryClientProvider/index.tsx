@@ -8,7 +8,14 @@ import {
 import {useEffect} from 'react';
 import {AppState} from 'react-native';
 
-const queryClient = new QueryClient();
+const queryClient = new QueryClient({
+  defaultOptions: {
+    queries: {
+      staleTime: 10 * 60 * 1000,
+      experimental_prefetchInRender: true,
+    },
+  },
+});
 
 export function QueryClientProvider({
   children,
