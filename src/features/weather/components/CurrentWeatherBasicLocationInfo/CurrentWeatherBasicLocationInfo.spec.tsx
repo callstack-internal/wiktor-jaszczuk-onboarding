@@ -1,4 +1,5 @@
 import {render} from '@testing-library/react-native';
+import {QueryClientProvider} from '../../../../components/QueryClientProvider';
 import type {Weather} from '../../hooks/useGetWeatherForLocation';
 import type {OWMetrics} from '../../services/openWeatherApiService/types';
 import {CurrentWeatherBasicLocationInfo} from './index';
@@ -9,7 +10,9 @@ describe('CurrentWeatherBasicLocationInfo', () => {
   it.each(METRICS)('Given UnitType: %s, then it will match snapshot', unit => {
     expect(
       render(
-        <CurrentWeatherBasicLocationInfo weather={WEATHER_MOCK} unit={unit} />,
+        <QueryClientProvider>
+          <CurrentWeatherBasicLocationInfo weather={WEATHER_MOCK} unit={unit} />
+        </QueryClientProvider>,
       ),
     ).toMatchSnapshot();
   });
