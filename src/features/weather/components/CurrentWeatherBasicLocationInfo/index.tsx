@@ -1,10 +1,8 @@
 import React from 'react';
 import {StyleSheet, Text, View, type ViewProps} from 'react-native';
-import type {
-  OWLanguage,
-  OWMetrics,
-} from '../../services/openWeatherApiService/types';
 import type {Weather} from '../../hooks/useGetWeatherForLocation';
+import type {OWMetrics} from '../../services/openWeatherApiService/types';
+import {LocationName} from './LocationName';
 import {TemperaturePill} from './TemperaturePill';
 import {WeatherIcon} from './WeatherIcon';
 
@@ -14,9 +12,8 @@ export function CurrentWeatherBasicLocationInfo({
   style,
   children,
   weather,
-  language,
   unit,
-}: ViewProps & {weather: Weather; unit: OWMetrics; language: OWLanguage}) {
+}: ViewProps & {weather: Weather; unit: OWMetrics}) {
   return (
     <View style={[style, styles.container]}>
       <WeatherIcon
@@ -24,9 +21,11 @@ export function CurrentWeatherBasicLocationInfo({
         style={styles.icon}
       />
       <View style={styles.textContainer}>
-        <Text style={styles.locationName}>
-          {weather.local_names[language] ?? weather.name}
-        </Text>
+        <LocationName
+          localNames={weather.local_names}
+          fallbackName={weather.name}
+          style={styles.locationName}
+        />
         <Text>{weather.weather[0].description}</Text>
       </View>
       <TemperaturePill

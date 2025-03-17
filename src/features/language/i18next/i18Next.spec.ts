@@ -5,7 +5,7 @@ import {
   parseLanguageCode,
   resetI18nInstance,
   supportedLanguages,
-} from './config';
+} from '.';
 
 describe('i18next config', () => {
   afterEach(() => {

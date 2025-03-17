@@ -4,10 +4,7 @@ import type {ListRenderItemInfo} from '@shopify/flash-list/src/FlashListProps';
 import React, {useCallback} from 'react';
 import {StyleSheet, View} from 'react-native';
 import {Content} from '../../../../components/Content';
-import {
-  HARDCODED_LANGUAGE,
-  HARDCODED_UNIT_TYPE,
-} from '../../constants/defaults';
+import {HARDCODED_UNIT_TYPE} from '../../constants/defaults';
 import {WEATHER_LOCATIONS} from '../../constants/weatherLocations';
 import {CurrentWeatherLocationListEntry} from './CurrentWeatherLocationListEntry';
 
@@ -22,13 +19,11 @@ export function WeatherLocations() {
       <CurrentWeatherLocationListEntry
         locationName={name}
         locationCountryCode={countryCode}
-        language={HARDCODED_LANGUAGE}
         unit={HARDCODED_UNIT_TYPE}
         onPress={weather => {
           navigation.push('WeatherLocationDetails', {
             ...weather,
             unit: HARDCODED_UNIT_TYPE,
-            language: HARDCODED_LANGUAGE,
           });
         }}
       />

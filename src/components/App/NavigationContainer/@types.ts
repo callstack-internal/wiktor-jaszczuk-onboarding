@@ -1,7 +1,7 @@
 import {StaticParamList} from '@react-navigation/native';
+import {NativeStackNavigationProp} from '@react-navigation/native-stack';
 import {rootNavigator} from './navigators/rootNavigator';
 import {weatherNavigator} from './navigators/weatherNavigator';
-import {NativeStackNavigationProp} from '@react-navigation/native-stack';
 
 declare global {
   namespace ReactNavigation {

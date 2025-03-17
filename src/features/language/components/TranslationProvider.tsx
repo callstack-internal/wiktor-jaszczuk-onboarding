@@ -1,8 +1,8 @@
 import type {i18n} from 'i18next';
 import {useState} from 'react';
-import {useAsyncEffect} from 'use-async-effect';
 import {I18nextProvider} from 'react-i18next';
-import {getI18nInstance, type SupportedLanguage} from '../i18next/config';
+import {useAsyncEffect} from 'use-async-effect';
+import {getI18nInstance, type SupportedLanguage} from '../i18next';
 
 export function TranslationProvider({
   children,

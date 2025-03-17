@@ -1,4 +1,5 @@
 import {useQuery} from '@tanstack/react-query';
+import {useGetCurrentLanguage} from '../../../language';
 import {WEATHER_QUERY_STALE_TIME_MS} from '../../constants/defaults';
 import {OpenWeatherApiService} from '../../services/openWeatherApiService';
 import type {
@@ -9,39 +10,43 @@ import type {
 export function useGetWeatherForLocation({
   locationName,
   locationCountryCode,
-  language,
   unitTypes,
 }: {
   locationName: string;
   locationCountryCode: string;
-  language: OWLanguage;
   unitTypes: OWMetrics;
 }) {
+  const {data: currentLanguage} = useGetCurrentLanguage();
   return useQuery({
     queryKey: [
       'getWeatherForLocation',
       locationName,
       locationCountryCode,
-      language,
+      currentLanguage,
       unitTypes,
     ],
     queryFn: async () =>
       await getWeatherForLocation(
         locationName,
         locationCountryCode,
-        language,
+        currentLanguage,
         unitTypes,
       ),
     staleTime: WEATHER_QUERY_STALE_TIME_MS,
+    enabled: currentLanguage !== undefined,
   });
 }
 
 async function getWeatherForLocation(
   locationName: string,
   countryCode: string,
-  language: OWLanguage,
+  language: OWLanguage | undefined,
   unitTypes: OWMetrics,
 ) {
+  if (language === undefined) {
+    return Promise.reject('getWeatherForLocation, undefined language');
+  }
+
   const {
     lat: latitude,
     lon: longitude,

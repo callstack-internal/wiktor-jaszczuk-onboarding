@@ -1,6 +1,6 @@
-import type {OWLanguage} from '../services/openWeatherApiService/types';
+import {supportedLanguages} from '../../language';
 
-export const OW_LANGUAGES: OWLanguage[] = [
+export const OW_LANGUAGES = [
   'eo',
   'fr',
   'de',
@@ -26,4 +26,6 @@ export const OW_LANGUAGES: OWLanguage[] = [
   'be',
   'cs',
   'sk',
-];
+].filter(owLanguage =>
+  (supportedLanguages as unknown as string[]).includes(owLanguage),
+);

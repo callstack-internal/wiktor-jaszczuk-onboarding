@@ -1,3 +1,20 @@
 {
-  "stackTitle": "Pogoda"
+  "stackTitle": "Pogoda",
+  "loading": "Ładowanie...",
+  "metrics": {
+    "temperature": "Temperatura",
+    "feelsLike": "Temperatura odczuwalna",
+    "pressure": "Ciśnienie",
+    "windSpeed": "Prędkość wiatru",
+    "humidity": "Wilgotność",
+    "cloudCover": "Zachmurzenie"
+  },
+  "buttons": {
+    "goBack": "Wróć"
+  },
+  "units": {
+    "percent": "%",
+    "hPa": "hPa",
+    "mph": "m/h"
+  }
 }

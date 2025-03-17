@@ -64,7 +64,7 @@ export const weatherEndpointResponseSchema = z.object({
     sea_level: z.number(),
     grnd_level: z.number(),
   }),
-  visibility: z.number(),
+  visibility: z.number().default(0),
   wind: z.object({
     speed: z.number(),
     deg: z.number().min(0).max(360),
